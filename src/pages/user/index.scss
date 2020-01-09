@@ -1,0 +1,7 @@
+.warp{ width:96%; margin: 0 auto;}
+.warp .head{display: flex;align-items: center; background: #594547;border-radius: 20px;}
+.warp .head .avatar{width: 130px; height: 130px; border-radius: 50%; overflow: hidden;padding: 20px;}
+.warp .head .avatar Image{width: 100%;}
+.warp .head .info{margin-left: 20px;color:#fff}
+.warp .head .info .nickname{font-size: 40px;}
+.warp .head .info .phone{font-size: 30px;margin-top: 10px;}
