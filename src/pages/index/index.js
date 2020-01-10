@@ -1,30 +1,40 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Swiper, SwiperItem, Image } from '@tarojs/components'
 import './index.scss'
-import ban1 from '../../images/banner1.jpg'
-import ban2 from '../../images/banner2.jpg'
-import ban3 from '../../images/banner3.jpg'
 import Container from '../../compoents/container'
 
 export default class Index extends Component {
 
-  state={
-    swiperHeight:''
+  state = {
+    bannerlist: [],
+    swiperHeight: ''
   }
 
-  componentWillMount(){
+  componentWillMount() {
     const systemInfo = Taro.getSystemInfoSync();
     const { width, height } = { width: 750, height: 480 };
     const swiperHeight = systemInfo.windowWidth * 0.94 * height / width;
-    this.setState({swiperHeight})
+    this.setState({ swiperHeight })
+    this.getBanner()
   }
-  
+
   Config = {
     navigationBarTitleText: '我家养身'
   }
 
+  getBanner() {
+    Taro.request({ url: `${Taro.requestUrl}getBanner` }).then(res => {
+      if (res.statusCode == 200) {
+        const bannerlist = res.data.result;
+        this.setState({ bannerlist })
+      }
+    }
+    )
+  }
+
   render() {
-    const { swiperHeight } = this.state;
+    const { swiperHeight, bannerlist } = this.state;
+    console.log('bannerlist', bannerlist);
     return (
       <View className='index'>
         <View className='warp'>
@@ -36,21 +46,17 @@ export default class Index extends Component {
             autoplay
             style={`height: ${swiperHeight}px`}
           >
-            <SwiperItem className='swiperitem'>
-              <View className='demo-text-1'>
-                <Image className='img' src={ban1} style={{width:'100%'}}></Image>
-              </View>
-            </SwiperItem>
-            <SwiperItem className='swiperitem'>
-              <View className='demo-text-2'>
-                <Image src={ban2} style={{width:'100%'}}></Image>
-              </View>
-            </SwiperItem>
-            <SwiperItem className='swiperitem'>
-              <View className='demo-text-3'>
-                <Image src={ban3} style={{width:'100%'}}></Image>
-              </View>
-            </SwiperItem>
+            {
+              bannerlist.map(item => {
+                return (
+                  <SwiperItem className='swiperitem' key={item.id}>
+                    <View className='demo-text-1'>
+                      <Image className='img' src={item.image_path} style={{ width: '100%' }}></Image>
+                    </View>
+                  </SwiperItem>
+                )
+              })
+            }
           </Swiper>
           <Container />
         </View>

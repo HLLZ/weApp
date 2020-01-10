@@ -1,5 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import Index from './pages/index/index'
+import baseUrl from './utils/baseUrl'
 import './app.scss'
 
 // 如果需要在 h5 环境中开启 React Devtools
@@ -7,6 +8,8 @@ import './app.scss'
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
 //   require('nerv-devtools')
 // }
+
+Taro.requestUrl=baseUrl.basePath
 
 class App extends Component {
 
@@ -40,6 +43,7 @@ class App extends Component {
       'pages/auth/index',
       'pages/user/index',
       'pages/medicine/index',
+      'pages/medicine/detail/index',
       'pages/news/index',
     ],
     window: {

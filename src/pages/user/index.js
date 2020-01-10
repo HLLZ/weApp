@@ -1,13 +1,16 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Image } from '@tarojs/components'
 import './index.scss'
-import avatar from '../../images/wode.png'
+import banner from '../../images/view.jpg'
 
 export default class User extends Component {
 
-  componentWillMount(){
-    this.user = Taro.getStorageInfoSync('user')
-    console.log(this.user,111)
+  componentWillMount() {
+    // this.user = Taro.getStorage('user')
+    // console.log(this.user,111)
+    this.user = Taro.getStorageSync('user');
+    console.log("User componentWillMount user", this.user);
+
   }
 
   Config = {
@@ -20,12 +23,21 @@ export default class User extends Component {
         <View className='warp'>
           <View className='head'>
             <View className='avatar'>
-              <Image src={avatar} mode='widthFix'></Image>
+              <Image src={this.user.avatarUrl} mode='widthFix'></Image>
             </View>
             <View className='info'>
-              <View className='nickname'>乐乐</View>
-              <View className='phone'>15395041061</View>
+              <View className='nickname'>{this.user.nickName}</View>
+              <View className='sex'>性别 : {this.user.gender==1 ? '男' : '女'}</View>
             </View>
+          </View>
+          <View className='body'>
+            <Image src={banner} mode='scaleToFill'></Image>
+          </View>
+          <View className='footer'>
+            <View className='item'>我的发表</View>
+            <View className='item'>绑定手机</View>
+            <View className='item'>联系客服</View>
+            <View className='item'>关于我们</View>
           </View>
         </View>
       </View>
