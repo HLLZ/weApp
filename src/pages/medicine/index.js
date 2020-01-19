@@ -6,21 +6,35 @@ export default class Index extends Component {
 
   state = {
     medicinelist: [],
+    current:1,
+    total:0,
+    pageSize:15
   }
 
   componentWillMount() {
-    this.getMedicine()
+    this.getMedicine(this.state.current)
   }
 
-  Config = {
-    navigationBarTitleText: '中药'
+  config = {
+    navigationBarTitleText: '中药大全',
   }
 
-  getMedicine() {
-    Taro.request({ url: `${Taro.requestUrl}getMedicine` }).then(res => {
+  onReachBottom(){
+    if(this.state.current * 10 < this.state.total){
+      this.setState({ current: this.state.current+1 })
+      this.getMedicine(this.state.current+1);
+    }
+  }
+
+  getMedicine(page) {
+    Taro.request({ url: `${Taro.requestUrl}getMedicine`,data: {current: page,pageSize: this.state.pageSize} }).then(res => {
       if (res.statusCode == 200) {
         const medicinelist = res.data.result;
-        this.setState({ medicinelist })
+        const newmedicinelist=this.state.medicinelist.concat(medicinelist)
+        const total = res.data.pagination.total;
+        this.setState({ medicinelist: newmedicinelist,
+          total
+         })
       }
     }
     )

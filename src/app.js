@@ -42,9 +42,13 @@ class App extends Component {
       'pages/index/index',
       'pages/auth/index',
       'pages/user/index',
+      'pages/user/about/index',
+      'pages/user/myarticle/index',
+      'pages/user/writearticle/index',
       'pages/medicine/index',
       'pages/medicine/detail/index',
-      'pages/news/index',
+      'pages/article/index',
+      'pages/article/detail/index',
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -71,10 +75,10 @@ class App extends Component {
           text: '中药'
         },
         {
-          pagePath: 'pages/news/index',
+          pagePath: 'pages/article/index',
           iconPath: 'images/tongzhi.png',
           selectedIconPath: 'images/tongzhi.png',
-          text: '时讯'
+          text: '社区'
         },
         {
           pagePath: 'pages/user/index',

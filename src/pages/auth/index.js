@@ -5,8 +5,9 @@ import Logo from '../../images/Logo.png'
 
 export default class AuthPage extends Taro.Component{
     config={
-        navigationBarTitleText: '登陆授权'
+        navigationBarTitleText: '登陆授权',
     }
+    
     getUserInfo (e) {
         console.log(e,1313)
         if (e.detail.errMsg === 'getUserInfo:ok') {

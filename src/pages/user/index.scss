@@ -7,5 +7,11 @@
 .warp .head .info .sex{font-size: 30px;margin-top: 10px;}
 .warp .body{width: 100%;height: 180px;border-radius: 25px;margin-top: 30px;overflow: hidden;}
 .warp .body Image{width: 100%;height: 100%;}
-.warp .footer{margin-top: 40px;}
-.warp .footer .item{height: 80px;}
+.warp .footer{width: 96%; margin: 40px auto 0;}
+.warp .footer .item {height: 100px;display: flex;align-items: center;justify-content: space-between;}
+.warp .footer .item .item_top{display: flex;align-items: center;}
+.warp .footer .item .item_top .icon{width: 40px;height: 40px;}
+.warp .footer .item .item_top .icon Image{width: 100%;height: 100%;}
+.warp .footer .item .item_top .title{margin-left: 20px;}
+.warp .footer .item .next{width: 30px;height: 30px;}
+.warp .footer .item .next Image{width: 100%;height: 100%;}
