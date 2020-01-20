@@ -1,21 +1,21 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-// import { AtForm, AtInput, AtButton } from 'taro-ui'
+import { AtForm, AtInput, AtButton } from 'taro-ui'
 import './index.scss'
 
 export default class Writearticle extends Component {
 
   constructor() {
     super(...arguments)
-    // this.state = {
-    //   value: ''
-    // }
+    this.state = {
+      value: ''
+    }
   }
-  // handleChange(value) {
-  //   this.setState({
-  //     value
-  //   })
-  // }
+  handleChange(value) {
+    this.setState({
+      value
+    })
+  }
   onSubmit(event) {
     console.log(event)
   }
@@ -31,7 +31,7 @@ export default class Writearticle extends Component {
     return (
       <View className='Writearticle'>
         <View className='warp'>
-          {/* <AtForm
+          <AtForm
             onSubmit={this.onSubmit.bind(this)}
             onReset={this.onReset.bind(this)}
           >
@@ -45,8 +45,7 @@ export default class Writearticle extends Component {
             />
             <AtButton formType='submit'>提交</AtButton>
             <AtButton formType='reset'>重置</AtButton>
-          </AtForm> */}
-          123
+          </AtForm>
         </View>
       </View>
     )

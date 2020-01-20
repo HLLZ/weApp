@@ -42,6 +42,7 @@ class App extends Component {
       'pages/index/index',
       'pages/newsdetail/index',
       'pages/auth/index',
+      'pages/auth/getphone/index',
       'pages/user/index',
       'pages/user/about/index',
       'pages/user/myarticle/index',

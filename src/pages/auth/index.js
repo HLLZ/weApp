@@ -3,26 +3,42 @@ import { View, Image, Button } from '@tarojs/components'
 import './index.scss'
 import Logo from '../../images/Logo.png'
 
-export default class AuthPage extends Taro.Component{
-    config={
+export default class AuthPage extends Taro.Component {
+    config = {
         navigationBarTitleText: '登陆授权',
     }
-    
-    getUserInfo (e) {
-        console.log(e,1313)
+
+    getUserInfo(e) {
+        console.log(e, 1313)
         if (e.detail.errMsg === 'getUserInfo:ok') {
-               const user = e.detail.userInfo;
-               console.log('user', user)
+            const user = e.detail.userInfo;
+            console.log('user', user)
             Taro.login().then(res => {
                 if (res.errMsg === 'login:ok') {
                     console.log('login res', res);
+                    if (res.code) {
+                        Taro.request({
+                            url: 'https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code',
+                            data: {
+                                js_code: res.code,
+                                appid:'wx922039dcb694fff4',
+                                secret:'0d71a3007bfa9eddb6675b56069f557f',
+                                grant_type: 'authorization_code',
+                            },
+                            method: 'GET',
+                            // eslint-disable-next-line no-shadow
+                            success: function (res) {
+                                Taro.setStorageSync('data', res.data);
+                            }
+                        })
+                    }
                     Taro.showLoading({
                         title: '登录中'
                     }).then(() => {
-                            Taro.hideLoading();
-                            Taro.setStorageSync('user', user);
-                            setTimeout(() => {
-                                Taro.reLaunch({url: '/pages/index/index'});
+                        Taro.hideLoading();
+                        Taro.setStorageSync('user', user);
+                        setTimeout(() => {
+                            Taro.reLaunch({ url: '/pages/index/index' });
                         }, 1000)
                     })
                 }
@@ -31,20 +47,20 @@ export default class AuthPage extends Taro.Component{
             this.refuseAuth();
         }
     }
-    refuseAuth () {
+    refuseAuth() {
         Taro.showToast({
             title: '授权失败，请重试',
             icon: 'none'
         })
         this.setting();
     }
-    setting () {
-        const that =this;
+    setting() {
+        const that = this;
         Taro.getSetting().then(res => {
             if (!res.authSetting['scope.userInfo']) {
                 Taro.showModal({
                     content: '系统检测到您并没有打开用户权限，是否去设置打开',
-                    success: function() {
+                    success: function () {
                         if (1) {
                             that.openSetting();
                         }
@@ -55,10 +71,10 @@ export default class AuthPage extends Taro.Component{
             }
         })
     }
-    openSetting () {
+    openSetting() {
         Taro.openSetting().then(res => {
             if (res.authSetting['scope.userInfo']) {
-                Taro.showToast({title: '授权成功，请重新登录！'});
+                Taro.showToast({ title: '授权成功，请重新登录！' });
             } else {
                 Taro.showToast({
                     title: '授权失败！',
@@ -67,7 +83,7 @@ export default class AuthPage extends Taro.Component{
             }
         })
     }
-    render(){
+    render() {
         return (
             <View>
                 <View className='auth-wrap'>
@@ -77,11 +93,11 @@ export default class AuthPage extends Taro.Component{
                     <View className='auth-subt'>你的公开信息（昵称、头像等）</View>
                     {
                         Taro.canIUse('button.open-type.getUserInfo') ?
-                        <View>
-                            <Button className='auth-ok' open-type='getUserInfo' onGetUserInfo={this.getUserInfo.bind(this)}>允许使用</Button>
-                            {/* <Button className='auth-no' onClick={this.refuseAuth.bind(this)}>取消</Button> */}
-                        </View> :
-                        <View className='auth-tip'>您的微信基础库版本过低，请升级后重试</View>
+                            <View>
+                                <Button className='auth-ok' open-type='getUserInfo' onGetUserInfo={this.getUserInfo.bind(this)}>允许使用</Button>
+                                {/* <Button className='auth-no' onClick={this.refuseAuth.bind(this)}>取消</Button> */}
+                            </View> :
+                            <View className='auth-tip'>您的微信基础库版本过低，请升级后重试</View>
                     }
                 </View>
             </View>
