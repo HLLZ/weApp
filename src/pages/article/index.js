@@ -31,7 +31,6 @@ export default class Article extends Component {
         const articlelist = res.data.result;
         const newarticlelist=this.state.articlelist.concat(articlelist)
         const total = res.data.pagination.total;
-        console.log('newarticlelist', newarticlelist);
         this.setState({ 
           articlelist: newarticlelist,
           total })

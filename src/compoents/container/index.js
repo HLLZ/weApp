@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Image } from '@tarojs/components'
+import { View, Image,Navigator } from '@tarojs/components'
 import './index.scss'
 import pic1 from '../../images/index_1.png'
 import pic2 from '../../images/index_2.png'
@@ -20,9 +20,7 @@ export default class Container extends Component {
     getNews() {
         Taro.request({ url: `${Taro.requestUrl}getNews` }).then(res => {
             if (res.statusCode == 200) {
-                console.log('res', res);
                 const newslist = res.data.result;
-                console.log('newslist', newslist);
                 this.setState({ newslist })
             }
         }
@@ -65,11 +63,12 @@ export default class Container extends Component {
                         {
                             newslist && newslist.length ?
                                 newslist.map(item => {
+                                    const url=`../../pages/newsdetail/index?id=${item.id}`
                                     return (
-                                        <View className='item' key={item.id}>
+                                        <Navigator url={url} className='item' key={item.id}>
                                             <View className='image'><Image src={item.image} mode='scaleToFill'></Image></View>
                                             <View className='title'>{item.title}</View>
-                                        </View>
+                                        </Navigator>
                                     )
                                 })
                                 :

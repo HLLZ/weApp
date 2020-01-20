@@ -34,7 +34,6 @@ export default class Index extends Component {
 
   render() {
     const { swiperHeight, bannerlist } = this.state;
-    console.log('bannerlist', bannerlist);
     return (
       <View className='index'>
         <View className='warp'>

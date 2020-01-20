@@ -20,9 +20,7 @@ export default class Index extends Component {
   getMedicine() {
     Taro.request({ url: `${Taro.requestUrl}getMedicine?id=${this.id}` }).then(res => {
       if (res.statusCode == 200) {
-        console.log('res', res);
         const medicinedetail = res.data.result[0];
-        console.log('medicinedetail', medicinedetail);
         this.setState({ medicinedetail })
       }
     }
@@ -31,7 +29,6 @@ export default class Index extends Component {
 
   render() {
     const { medicinedetail } = this.state
-    console.log('medicinedetail', medicinedetail);
     return (
       <View className='index'>
         <View className='warp'>

@@ -15,6 +15,7 @@ export default class AuthPage extends Taro.Component{
                console.log('user', user)
             Taro.login().then(res => {
                 if (res.errMsg === 'login:ok') {
+                    console.log('login res', res);
                     Taro.showLoading({
                         title: '登录中'
                     }).then(() => {

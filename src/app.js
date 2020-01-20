@@ -40,6 +40,7 @@ class App extends Component {
   config = {
     pages: [
       'pages/index/index',
+      'pages/newsdetail/index',
       'pages/auth/index',
       'pages/user/index',
       'pages/user/about/index',
@@ -49,6 +50,7 @@ class App extends Component {
       'pages/medicine/detail/index',
       'pages/article/index',
       'pages/article/detail/index',
+
     ],
     window: {
       backgroundTextStyle: 'light',

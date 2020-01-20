@@ -5,10 +5,7 @@ import './index.scss'
 export default class User extends Component {
 
   componentWillMount() {
-    // this.user = Taro.getStorage('user')
-    // console.log(this.user,111)
     this.user = Taro.getStorageSync('user');
-    console.log("User componentWillMount user", this.user);
 
   }
 

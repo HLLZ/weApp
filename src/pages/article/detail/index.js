@@ -18,11 +18,9 @@ export default class Index extends Component {
   }
 
   getArticle() {
-    Taro.request({ url: `${Taro.requestUrl}getArticle?id=${this.id}`}).then(res => {
+    Taro.request({ url: `${Taro.requestUrl}getArticle?id=${this.id}` }).then(res => {
       if (res.statusCode == 200) {
-        console.log('res', res);
         const articledetail = res.data.result[0];
-        console.log('articledetail', articledetail);
         this.setState({ articledetail })
       }
     }
@@ -31,7 +29,6 @@ export default class Index extends Component {
 
   render() {
     const { articledetail } = this.state
-    console.log('articledetail', articledetail);
     return (
       <View className='index'>
         <View className='warp'>
@@ -39,6 +36,11 @@ export default class Index extends Component {
             <Image src={medicinedetail.image_path} mode='widthFix'></Image>
           </View> */}
           <View className='title'>{articledetail.title}</View>
+          <View className='content'>
+            <View className='name'>作者:{articledetail.name}</View>
+            <View className='time'>{articledetail.createdAt}</View>
+          </View>
+          <View className='subtitle'>{articledetail.subtitle}</View>
           <View className='text'>{articledetail.text}</View>
         </View>
       </View>
