@@ -9,7 +9,6 @@ export default class AuthPage extends Taro.Component {
     }
 
     getUserInfo(e) {
-        console.log(e, 1313)
         if (e.detail.errMsg === 'getUserInfo:ok') {
             const user = e.detail.userInfo;
             console.log('user', user)
@@ -28,6 +27,7 @@ export default class AuthPage extends Taro.Component {
                             method: 'GET',
                             // eslint-disable-next-line no-shadow
                             success: function (res) {
+                                console.log('login res', res);
                                 Taro.setStorageSync('data', res.data);
                             }
                         })

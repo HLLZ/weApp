@@ -49,7 +49,7 @@ export default class Article extends Component {
               articlelist.map(item => {
                 const url=`./detail/index?id=${item.id}`
                 return (
-                  <Navigator url={url} className='item' key={item.id}>
+                  <Navigator url={url} className='item' key={item.id} hoverClass='none'>
                     {/* <View className='image'><Image src={item.image} mode='scaleToFill'></Image></View> */}
                     <View className='content'>
                       <View className='title'>{item.title}</View>

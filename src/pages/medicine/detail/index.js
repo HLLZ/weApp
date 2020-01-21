@@ -13,8 +13,8 @@ export default class Index extends Component {
     this.getMedicine()
   }
 
-  Config = {
-    navigationBarTitleText: '中药',
+  config = {
+    navigationBarTitleText: '中药详情',
   }
 
   getMedicine() {

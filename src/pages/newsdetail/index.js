@@ -13,8 +13,8 @@ export default class Index extends Component {
     this.getNews()
   }
 
-  Config = {
-    navigationBarTitleText: '新闻',
+  config = {
+    navigationBarTitleText: '新闻详情',
   }
 
   getNews() {

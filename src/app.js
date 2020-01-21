@@ -40,6 +40,7 @@ class App extends Component {
   config = {
     pages: [
       'pages/index/index',
+      'pages/news/index',
       'pages/newsdetail/index',
       'pages/auth/index',
       'pages/auth/getphone/index',

@@ -12,13 +12,15 @@ export default class Container extends Component {
 
     state = {
         newslist: [],
+        current:1,
+        pageSize:4,
     }
     componentWillMount() {
         this.getNews();
     }
 
     getNews() {
-        Taro.request({ url: `${Taro.requestUrl}getNews` }).then(res => {
+        Taro.request({ url: `${Taro.requestUrl}getNews`,data:{current:this.state.current,pageSize:this.state.pageSize}}).then(res => {
             if (res.statusCode == 200) {
                 const newslist = res.data.result;
                 this.setState({ newslist })
@@ -57,7 +59,7 @@ export default class Container extends Component {
                 <View className='section3'>
                     <View className='head'>
                         <View>新闻资讯</View>
-                        <Image src={next} style={{ width: '30px', height: '30px' }}></Image>
+                        <Navigator url='../../pages/news/index' className='img' hoverClass='none'><Image src={next} style={{ width: '30px', height: '30px' }}></Image></Navigator>
                     </View>
                     <View className='body'>
                         {
@@ -65,7 +67,7 @@ export default class Container extends Component {
                                 newslist.map(item => {
                                     const url=`../../pages/newsdetail/index?id=${item.id}`
                                     return (
-                                        <Navigator url={url} className='item' key={item.id}>
+                                        <Navigator url={url} className='item' key={item.id} hoverClass='none'>
                                             <View className='image'><Image src={item.image} mode='scaleToFill'></Image></View>
                                             <View className='title'>{item.title}</View>
                                         </Navigator>
