@@ -30,7 +30,7 @@ export default class News extends Component {
         Taro.request({ url: `${Taro.requestUrl}getNews`, data: { current: page, pageSize: this.state.pageSize } }).then(res => {
             if (res.statusCode == 200) {
                 const newnewslist = res.data.result;
-                const newslist = newnewslist.concat(this.state.newslist)
+                const newslist = newnewslist.concat(this.state.newslist);
                 const total = res.data.pagination.total;
                 this.setState({
                     newslist,
@@ -41,6 +41,14 @@ export default class News extends Component {
         )
     }
 
+    appendZero (obj) {
+        if (obj < 10) {
+           return '0' + obj
+         } else {
+           return obj
+         }
+      }
+
     render() {
         const { newslist } = this.state;
         return (
@@ -49,13 +57,21 @@ export default class News extends Component {
                     {
                         newslist && newslist.length ?
                             newslist.map(item => {
+                                var time = new Date(item.createdAt);
+                                var yy=time.getFullYear();
+                                var mm=this.appendZero(time.getMonth()+1);
+                                var dd=this.appendZero(time.getDate());
+                                var hh=this.appendZero(time.getHours());
+                                var ff=this.appendZero(time.getMinutes());
+                                var ss=this.appendZero(time.getSeconds());
+                                var date =`${yy}-${mm}-${dd} ${hh}:${ff}:${ss}`
                                 const url = `../../pages/newsdetail/index?id=${item.id}`
                                 return (
                                     <Navigator url={url} className='item' key={item.id}>
                                         <View className='image'><Image src={item.image} mode='scaleToFill'></Image></View>
                                         <View className='body'>
                                             <View className='title'>{item.title}</View>
-                                            <View className='time'>{item.createdAt}</View>
+                                            <View className='time'>{date}</View>
                                             <View className='text'>{item.text}</View>
                                         </View>
                                     </Navigator>

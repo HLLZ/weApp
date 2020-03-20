@@ -41,6 +41,14 @@ export default class Article extends Component {
     )
   }
 
+  appendZero (obj) {
+    if (obj < 10) {
+       return '0' + obj
+     } else {
+       return obj
+     }
+  }
+
   render() {
     const { articlelist } = this.state;
     return (
@@ -49,6 +57,14 @@ export default class Article extends Component {
           {
             articlelist && articlelist.length ?
               articlelist.map(item => {
+                var time = new Date(item.createdAt);
+                var yy=time.getFullYear();
+                var mm=this.appendZero(time.getMonth()+1);
+                var dd=this.appendZero(time.getDate());
+                var hh=this.appendZero(time.getHours());
+                var ff=this.appendZero(time.getMinutes());
+                var ss=this.appendZero(time.getSeconds());
+                var date =`${yy}-${mm}-${dd} ${hh}:${ff}:${ss}`
                 const url=`./detail/index?id=${item.id}`
                 return (
                   <Navigator url={url} className='item' key={item.id} hoverClass='none'>
@@ -56,13 +72,13 @@ export default class Article extends Component {
                     <View className='content'>
                       <View className='title'>{item.title}</View>
                       <View className='name'>作者:  {item.name}</View>
-                      <View className='createtime'>{item.subtitle} {item.createdAt}</View>
+                      <View className='createtime'>{item.subtitle}    {date}</View>
                     </View>
                   </Navigator>
                 )
               })
               :
-              ''
+              <View className='none'>没有文章发布，快来成为第一个作者吧....</View>
           }
         </View>
       </View>
