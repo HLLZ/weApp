@@ -16,6 +16,7 @@ export default class Article extends Component {
 
   onReachBottom(){
     if(this.state.current * 10 < this.state.total){
+      Taro.showLoading()
       this.setState({ current: this.state.current+1 })
       this.getArticle(this.state.current+1);
     }
@@ -34,6 +35,7 @@ export default class Article extends Component {
         this.setState({ 
           articlelist: newarticlelist,
           total })
+          Taro.hideLoading()
       }
     }
     )

@@ -1,10 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Image,Navigator } from '@tarojs/components'
+import { View, Image, Navigator } from '@tarojs/components'
 import './index.scss'
-import pic1 from '../../images/index_1.png'
-import pic2 from '../../images/index_2.png'
-import pic3 from '../../images/index_3.png'
-import pic4 from '../../images/index_4.png'
 import view from '../../images/view.jpg'
 import next from '../../images/next.png'
 
@@ -12,15 +8,17 @@ export default class Container extends Component {
 
     state = {
         newslist: [],
-        current:1,
-        pageSize:4,
+        seasonlist: [],
+        current: 1,
+        pageSize: 4,
     }
     componentWillMount() {
         this.getNews();
+        this.getSeason();
     }
 
     getNews() {
-        Taro.request({ url: `${Taro.requestUrl}getNews`,data:{current:this.state.current,pageSize:this.state.pageSize}}).then(res => {
+        Taro.request({ url: `${Taro.requestUrl}getNews`, data: { current: this.state.current, pageSize: this.state.pageSize } }).then(res => {
             if (res.statusCode == 200) {
                 const newslist = res.data.result;
                 this.setState({ newslist })
@@ -29,27 +27,35 @@ export default class Container extends Component {
         )
     }
 
+    getSeason() {
+        Taro.request({ url: `${Taro.requestUrl}getSeason` }).then(res => {
+            if (res.statusCode == 200) {
+                const seasonlist = res.data.result;
+                this.setState({ seasonlist })
+            }
+        }
+        )
+    }
+
     render() {
-        const { newslist } = this.state;
+        const { newslist, seasonlist } = this.state;
         return (
             <View className='index'>
                 <View className='section1'>
-                    <View>
-                        <Image src={pic1} style={{ width: '50px', height: '50px' }}></Image>
-                        <View className='s1-a'>春季</View>
-                    </View>
-                    <View>
-                        <Image src={pic2} style={{ width: '50px', height: '50px' }}></Image>
-                        <View className='s1-a'>夏季</View>
-                    </View>
-                    <View>
-                        <Image src={pic3} style={{ width: '50px', height: '50px' }}></Image>
-                        <View className='s1-a'>秋季</View>
-                    </View>
-                    <View>
-                        <Image src={pic4} style={{ width: '50px', height: '50px' }}></Image>
-                        <View className='s1-a'>冬季</View>
-                    </View>
+                    {
+                        seasonlist && seasonlist.length > 0 ?
+                            seasonlist.map(item => {
+                                const url=`../../pages/season/index?id=${item.id}`
+                                return (
+                                    <Navigator url={url} hoverClass='none' key={item.id}>
+                                        <Image src={item.image} style={{ width: '50px', height: '50px' }}></Image>
+                                        <View className='s1-a'>{item.season}</View>
+                                    </Navigator>
+                                )
+                            })
+                        :
+                        ''
+                    }
                 </View>
                 <View className='section2'>
                     <View className='s2-a'>
@@ -65,7 +71,7 @@ export default class Container extends Component {
                         {
                             newslist && newslist.length ?
                                 newslist.map(item => {
-                                    const url=`../../pages/newsdetail/index?id=${item.id}`
+                                    const url = `../../pages/newsdetail/index?id=${item.id}`
                                     return (
                                         <Navigator url={url} className='item' key={item.id} hoverClass='none'>
                                             <View className='image'><Image src={item.image} mode='scaleToFill'></Image></View>

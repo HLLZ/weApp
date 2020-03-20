@@ -41,6 +41,7 @@ class App extends Component {
     pages: [
       'pages/index/index',
       'pages/news/index',
+      'pages/season/index',
       'pages/newsdetail/index',
       'pages/auth/index',
       'pages/auth/getphone/index',
@@ -51,6 +52,7 @@ class App extends Component {
       'pages/medicine/index',
       'pages/medicine/detail/index',
       'pages/article/index',
+      'pages/article/commit/index',
       'pages/article/detail/index',
 
     ],

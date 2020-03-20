@@ -7,21 +7,20 @@ export default class AuthPage extends Taro.Component {
     config = {
         navigationBarTitleText: '登陆授权',
     }
-
     getUserInfo(e) {
+        var that=this;
         if (e.detail.errMsg === 'getUserInfo:ok') {
             const user = e.detail.userInfo;
             console.log('user', user)
             Taro.login().then(res => {
                 if (res.errMsg === 'login:ok') {
-                    console.log('login res', res);
                     if (res.code) {
                         Taro.request({
                             url: 'https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code',
                             data: {
                                 js_code: res.code,
-                                appid:'wx922039dcb694fff4',
-                                secret:'0d71a3007bfa9eddb6675b56069f557f',
+                                appid: 'wx922039dcb694fff4',
+                                secret: '0d71a3007bfa9eddb6675b56069f557f',
                                 grant_type: 'authorization_code',
                             },
                             method: 'GET',
@@ -29,6 +28,8 @@ export default class AuthPage extends Taro.Component {
                             success: function (res) {
                                 console.log('login res', res);
                                 Taro.setStorageSync('data', res.data);
+                                console.log(user.nickName, res.data.openid)
+                                that.setUser(user.nickName, res.data.openid)
                             }
                         })
                     }
@@ -83,6 +84,15 @@ export default class AuthPage extends Taro.Component {
             }
         })
     }
+
+    setUser(nickName, openid) {
+        Taro.request({ url: `${Taro.requestUrl}setUser`, method: 'POST', data: { openid: openid, nickName: nickName }}).then(res => {
+            if (res.statusCode == 200) {
+                console.log('用户创建成功')
+            }
+        })
+    }
+
     render() {
         return (
             <View>

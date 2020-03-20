@@ -8,3 +8,10 @@
 .warp .subtitle{margin-top: 20px;font-size: 30px;text-align: center;}
 .warp .title{font-size: 40px;text-align: center;margin: 15px 0;font-weight: bold;}
 .warp .text{font-size: 30px;width: 94%;margin: 40px auto;text-indent: 2em;}
+.warp .footer{overflow: hidden;}
+.warp .footer .foot{display: flex;align-items: center;float: right;margin-right: 20px;}
+.warp .footer .foot .message{width: 40px;height: 40px;}
+.warp .footer .foot .message Image{width: 100%;}
+.warp .footer .foot .commit{margin-left: 5px;}
+.warp .co{background: #efefef;margin-top: 20px;padding: 20px 0;border-radius: 20px;overflow: hidden;}
+.warp .co .com{padding: 5px 10px;color:#666}
