@@ -24,6 +24,7 @@ export default class Index extends Component {
 
   onReset() { 
     this.setState({text:''})
+    Taro.navigateBack({delta: 1});
   }
 
   onSubmit() {
@@ -42,8 +43,8 @@ export default class Index extends Component {
         Taro.request({ url: `${Taro.requestUrl}setCommit`, method: 'POST', data: { text: this.state.text, parent_id: this.id,nickName:this.nickName } }).then(res => {
           if (res.statusCode == 200) {
             Taro.showToast({ title: '评论成功' })
-            Taro.navigateTo({
-              url:`../detail/index?id=${this.id}`
+            Taro.navigateBack({
+              delta:1
               });
           }
         })

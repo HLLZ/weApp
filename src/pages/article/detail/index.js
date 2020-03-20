@@ -16,6 +16,9 @@ export default class Index extends Component {
     this.getArticle()
     this.getCommit()
   }
+  componentDidShow(){
+    this.getCommit()
+  }
 
   config = {
     navigationBarTitleText: '养生文选',
@@ -93,7 +96,7 @@ export default class Index extends Component {
                   )
                 })
                 :
-                ''
+                <View className='none'>还没有评论，快来发表评论吧！！！</View>
             }
           </View>
         </View>

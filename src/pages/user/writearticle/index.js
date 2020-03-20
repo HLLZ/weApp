@@ -68,8 +68,8 @@ export default class Writearticle extends Component {
           if (res.statusCode == 200) {
             Taro.showToast({ title: '发表成功' })
             setTimeout(() => {
-              Taro.switchTab({
-                url: '/pages/article/index'
+              Taro.navigateBack({
+                delta:1
               });
             }, 2000)
           }
