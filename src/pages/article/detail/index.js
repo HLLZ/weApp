@@ -70,12 +70,10 @@ export default class Index extends Component {
           {/* <View className='banner'>
             <Image src={medicinedetail.image_path} mode='widthFix'></Image>
           </View> */}
-          <View>
+          <View className='article'>
             <View className='title'>{articledetail.title}</View>
-            <View className='content'>
-              <View className='name'>作者:{articledetail.name}</View>
-              <View className='time'>{date}</View>
-            </View>
+            <View className='name'>作者:{articledetail.name}</View>
+            <View className='time'>{date}</View>
             <View className='subtitle'>{articledetail.subtitle}</View>
             <View className='text'>{articledetail.text}</View>
           </View>

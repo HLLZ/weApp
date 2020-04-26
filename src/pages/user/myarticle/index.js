@@ -22,7 +22,7 @@ export default class Myarticle extends Component {
   }
 
   getMyArticle() {
-    Taro.request({ url: `${Taro.requestUrl}getArticle`,data:{openid:this.state.openid} }).then(res => {
+    Taro.request({ url: `${Taro.requestUrl}getArticle`,data:{openid:this.state.openid,status:1} }).then(res => {
       if (res.statusCode == 200) {
         const myArticlelist = res.data.result;
         this.setState({ myArticlelist })
@@ -68,7 +68,7 @@ export default class Myarticle extends Component {
                 )
               })
               :
-              ''
+              <View className='none'>没有文章发布，快去发表文章吧....</View>
           }
         </View>
       </View>

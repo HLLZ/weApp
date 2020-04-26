@@ -27,7 +27,7 @@ export default class Article extends Component {
   }
 
   getArticle(page) {
-    Taro.request({ url: `${Taro.requestUrl}getArticle`,data: {current: page,pageSize: this.state.pageSize}}).then(res => {
+    Taro.request({ url: `${Taro.requestUrl}getArticle`,data: {current: page,pageSize: this.state.pageSize,status:1}}).then(res => {
       if (res.statusCode == 200) {
         const articlelist = res.data.result;
         const newarticlelist=this.state.articlelist.concat(articlelist)

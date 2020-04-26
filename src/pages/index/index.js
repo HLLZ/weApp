@@ -19,7 +19,7 @@ export default class Index extends Component {
   }
 
   Config = {
-    navigationBarTitleText: '我家养身'
+    navigationBarTitleText: '我家养生'
   }
 
   getBanner() {
