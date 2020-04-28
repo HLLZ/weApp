@@ -40,6 +40,7 @@ class App extends Component {
   config = {
     pages: [
       'pages/index/index',
+      'pages/video/index',
       'pages/news/index',
       'pages/season/index',
       'pages/newsdetail/index',
@@ -85,6 +86,12 @@ class App extends Component {
           iconPath: 'images/tongzhi.png',
           selectedIconPath: 'images/tongzhi.png',
           text: '社区'
+        },
+        {
+          pagePath: 'pages/video/index',
+          iconPath: 'images/shipin.png',
+          selectedIconPath: 'images/shipin.png',
+          text: '学习'
         },
         {
           pagePath: 'pages/user/index',
