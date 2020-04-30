@@ -6,14 +6,14 @@ page{
         .at-tabs{
             width: 180px;
             .at-tabs__item{
-                overflow: hidden;white-space: nowrap;text-overflow:ellipsis;
+                overflow: hidden;white-space: nowrap;text-overflow:ellipsis;font-size: 32px;
             }
         }
         .at-tabs__item--active {
-            color: #36ab60;
+            color: #2b7d7b;
             }
         .at-tabs__item-underline {
-            background-color: #36ab60;
+            background-color: #2b7d7b;
             }
             .ban_item{
                 Video{

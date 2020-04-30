@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Image, Navigator } from '@tarojs/components'
 import './index.scss'
-import banner from '../../images/view.jpg'
+import banner from '../../images/view.png'
 import item1 from '../../images/user_2.png'
 import item2 from '../../images/user_1.png'
 import item3 from '../../images/user_3.png'

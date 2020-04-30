@@ -1,9 +1,9 @@
 .warp{ width:96%; margin: 0 auto;}
 .warp .none {text-align: center;color: #999999;margin-top: 50px;font-size: 26px;}
-.warp .item{display: flex; align-items: center;padding: 20px 0;}
+.warp .item{display: flex; align-items: center;padding: 20px 0;border:1px solid #2b7d7b;margin-bottom: 10px;border-radius: 15px;}
 // .warp .item .image{width:150px;height: 150px;border-radius: 20px;overflow: hidden;}
 // .warp .item .image Image{width:100%;height: 100%;}
-.warp .item .content{margin-left: 20px;}
-.warp .item .content .title{ font-size: 32px;overflow: hidden;}
-.warp .item .content .name{font-size: 26px;margin-top: 10px;}
-.warp .item .content .createtime{font-size: 26px;color:#999;margin-top: 10px;overflow: hidden;}
+.warp .item .content{margin-left: 20px;width: 100%;}
+.warp .item .content .title{width: 100%; font-size: 40px; color:#2b7d7b;overflow: hidden; text-overflow:ellipsis;white-space:nowrap;}
+.warp .item .content .name{width: 100%;font-size: 34px;margin-top: 10px;overflow: hidden; text-overflow:ellipsis;white-space:nowrap;}
+.warp .item .content .createtime{width: 100%;font-size: 30px;color:#999;margin-top: 10px;overflow: hidden; text-overflow:ellipsis;white-space:nowrap;}

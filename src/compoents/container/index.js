@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Image, Navigator } from '@tarojs/components'
 import './index.scss'
-import view from '../../images/view.jpg'
+import view from '../../images/view.png'
 import next from '../../images/next.png'
 
 export default class Container extends Component {

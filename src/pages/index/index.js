@@ -46,7 +46,7 @@ export default class Index extends Component {
             style={`height: ${swiperHeight}px`}
           >
             {
-              bannerlist.map(item => {
+              bannerlist && bannerlist.map(item => {
                 return (
                   <SwiperItem className='swiperitem' key={item.id}>
                     <View className='demo-text-1'>

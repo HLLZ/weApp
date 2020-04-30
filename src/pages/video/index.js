@@ -10,7 +10,7 @@ export default class Index extends Component {
     tabpanslist: [],
     current:1,
     total:0,
-    pageSize:5
+    pageSize:3
   }
 
   componentWillMount() {

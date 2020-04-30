@@ -77,20 +77,33 @@ export default class Index extends Component {
             <View className='subtitle'>{articledetail.subtitle}</View>
             <View className='text'>{articledetail.text}</View>
           </View>
-          <Navigator url={url} className='footer'>
-            <View className='foot'>
+          <View  className='footer'>
+            <Navigator url={url} className='foot'>
               <View className='message'><Image src={message} mode='widthFix'></Image></View>
               <View className='commit'>评论</View>
-            </View>
-          </Navigator>
+            </Navigator>
+          </View>
           <View className='co'>
             {
               commitlist && commitlist.length ?
                 commitlist.map(item => {
+                  const url1 = `../commit/index?id=${this.id}&&tonickName=${item.nickName}`
+                  var time = new Date(item.createdAt);
+                  var mm=this.appendZero(time.getMonth()+1);
+                  var dd=this.appendZero(time.getDate());
+                  var hh=this.appendZero(time.getHours());
+                  var ff=this.appendZero(time.getMinutes());
+                  var ss=this.appendZero(time.getSeconds());
+                  var comDate =`${mm}月${dd}日 ${hh}:${ff}:${ss}`
                   return (
-                    <View className='com' key={item.id}>
-                      {item.nickName}：{item.text}
-                    </View>
+                    <Navigator url={url1} className='com' key={item.id}>
+                      {
+                        item.tonickName == null?
+                      <View><View style='display:inline-block'><View style='color:#21a8a5;display:inline-block'>{item.nickName}</View>:{item.text}</View><View style='display:inline-block;float:right;'>{comDate}</View></View>
+                        :
+                      <View><View style='color:#21a8a5;display:inline-block'>{item.nickName}</View>回复<View style='color:#21a8a5;display:inline-block'>{item.tonickName}</View>:{item.text}<View style='display:inline-block;float:right'>{comDate}</View></View>
+                      }
+                    </Navigator>
                   )
                 })
                 :

@@ -11,6 +11,7 @@ export default class Index extends Component {
 
   componentWillMount() {
     this.id = this.$router.params.id;
+    this.tonickName = this.$router.params.tonickName;
     this.nickName = Taro.getStorageSync('user').nickName;
   }
 
@@ -40,7 +41,7 @@ export default class Index extends Component {
       content: '确认提交评论？',
     }).then(dat => {
       if (dat.confirm) {
-        Taro.request({ url: `${Taro.requestUrl}setCommit`, method: 'POST', data: { text: this.state.text, parent_id: this.id,nickName:this.nickName } }).then(res => {
+        Taro.request({ url: `${Taro.requestUrl}setCommit`, method: 'POST', data: { text: this.state.text, parent_id: this.id,nickName:this.nickName,tonickName:this.tonickName } }).then(res => {
           if (res.statusCode == 200) {
             Taro.showToast({ title: '评论成功' })
             Taro.navigateBack({
