@@ -99,9 +99,9 @@ export default class Index extends Component {
                     <Navigator url={url1} className='com' key={item.id}>
                       {
                         item.tonickName == null?
-                      <View><View style='display:inline-block'><View style='color:#21a8a5;display:inline-block'>{item.nickName}</View>:{item.text}</View><View style='display:inline-block;float:right;'>{comDate}</View></View>
+                      <View style='padding:5px 10px'><span><span style='color:#21a8a5;'>{item.nickName}</span>:{item.text}</span><span style='float:right;'>{comDate}</span></View>
                         :
-                      <View><View style='color:#21a8a5;display:inline-block'>{item.nickName}</View>回复<View style='color:#21a8a5;display:inline-block'>{item.tonickName}</View>:{item.text}<View style='display:inline-block;float:right'>{comDate}</View></View>
+                      <View style='padding:5px 10px'><span style='color:#21a8a5;'>{item.nickName}</span>回复<span style='color:#21a8a5;'>{item.tonickName}</span>:{item.text}<span style='float:right'>{comDate}</span></View>
                       }
                     </Navigator>
                   )
