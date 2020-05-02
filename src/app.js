@@ -59,9 +59,8 @@ class App extends Component {
     ],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: '我家养身',
-      navigationBarTextStyle: 'black'
+      navigationBarBackgroundColor: '#2b7d7b',
+      navigationBarTextStyle: 'white'
     },
     tabBar: {
       backgroundColor: '#fff',
@@ -72,31 +71,31 @@ class App extends Component {
         {
           pagePath: 'pages/index/index',
           iconPath: 'images/shouye.png',
-          selectedIconPath: 'images/shouye.png',
+          selectedIconPath: 'images/shouye1.png',
           text: '首页'
         },
         {
           pagePath: 'pages/medicine/index',
           iconPath: 'images/zhongyao.png',
-          selectedIconPath: 'images/zhongyao.png',
+          selectedIconPath: 'images/zhongyao1.png',
           text: '中药'
         },
         {
           pagePath: 'pages/article/index',
           iconPath: 'images/tongzhi.png',
-          selectedIconPath: 'images/tongzhi.png',
+          selectedIconPath: 'images/tongzhi1.png',
           text: '社区'
         },
         {
           pagePath: 'pages/video/index',
           iconPath: 'images/shipin.png',
-          selectedIconPath: 'images/shipin.png',
+          selectedIconPath: 'images/shipin1.png',
           text: '学习'
         },
         {
           pagePath: 'pages/user/index',
           iconPath: 'images/wode.png',
-          selectedIconPath: 'images/wode.png',
+          selectedIconPath: 'images/wode1.png',
           text: '我的'
         },
       ]

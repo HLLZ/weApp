@@ -1,8 +1,8 @@
 .warp {width: 96%; margin: 0 auto;}
 .warp .item{display: flex;align-items: center;width:100%;}
-.warp .item .image{width: 150px;height:150px;border-radius: 20px; overflow: hidden;padding: 10px 0;}
+.warp .item .image{width: 200px;height:200px;border-radius: 20px; overflow: hidden;padding: 10px 0;}
 .warp .item .image Image{width: 100%; height: 100%;}
 .warp .item .body{margin-left: 20px;width: 500px;}
-.warp .item .body .time{font-size: 24px;color: #999;}
-.warp .item .body .title{font-size: 30px;padding-bottom:10px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
-.warp .item .body .text{width:90%;font-size: 26px;color: #999;margin-top: 10px; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+.warp .item .body .time{font-size: 30px;color: #999;}
+.warp .item .body .title{font-size: 36px;padding-bottom:20px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color:#2b7d7b}
+.warp .item .body .text{width:90%;font-size: 32px;color: #999;margin-top: 20px; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}

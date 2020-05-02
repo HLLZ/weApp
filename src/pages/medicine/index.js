@@ -19,6 +19,8 @@ export default class Index extends Component {
 
   config = {
     navigationBarTitleText: '中药大全',
+    navigationBarBackgroundColor:'#2b7d7b',
+    navigationBarTextStyle:'white'
   }
 
   onReachBottom() {

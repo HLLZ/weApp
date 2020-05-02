@@ -18,8 +18,8 @@ export default class Index extends Component {
     this.getBanner()
   }
 
-  Config = {
-    navigationBarTitleText: '我家养生'
+  config = {
+    navigationBarTitleText: '我家养生',
   }
 
   getBanner() {
@@ -50,7 +50,7 @@ export default class Index extends Component {
                 return (
                   <SwiperItem className='swiperitem' key={item.id}>
                     <View className='demo-text-1'>
-                      <Image className='img' src={item.image_path} style={{ width: '100%' }}></Image>
+                      <Image className='img' src={item.image_path} style={{ width: '100%',height:'100%' }}></Image>
                     </View>
                   </SwiperItem>
                 )

@@ -17,6 +17,8 @@ export default class User extends Component {
 
   config = {
     navigationBarTitleText: '个人中心',
+    navigationBarBackgroundColor:'#2b7d7b',
+    navigationBarTextStyle:'white'
   }
 
   phoneCall(){
@@ -46,7 +48,7 @@ export default class User extends Component {
             </View>
           </View>
           <View className='body'>
-            <Image src={banner} mode='scaleToFill'></Image>
+            <Image src={banner} mode='widthFix'></Image>
           </View>
           <View className='footer'>
             <Navigator url='./myarticle/index' className='item'>

@@ -24,6 +24,8 @@ export default class Article extends Component {
 
   config = {
     navigationBarTitleText: '养生社区',
+    navigationBarBackgroundColor:'#2b7d7b',
+    navigationBarTextStyle:'white'
   }
 
   getArticle(page) {

@@ -48,7 +48,7 @@ export default class Container extends Component {
                                 const url=`../../pages/season/index?id=${item.id}`
                                 return (
                                     <Navigator url={url} hoverClass='none' key={item.id}>
-                                        <Image src={item.image} style={{ width: '50px', height: '50px' }}></Image>
+                                        <Image src={item.image} style={{ width: '65px', height: '65px' }}></Image>
                                         <View className='s1-a'>{item.season}</View>
                                     </Navigator>
                                 )
@@ -59,7 +59,7 @@ export default class Container extends Component {
                 </View>
                 <View className='section2'>
                     <View className='s2-a'>
-                        <Image src={view} style={{ width: '100%', height: '90px' }}></Image>
+                        <Image src={view} style={{ width: '100%'}} mode='widthFix'></Image>
                     </View>
                 </View>
                 <View className='section3'>

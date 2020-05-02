@@ -98,8 +98,8 @@ export default class AuthPage extends Taro.Component {
             <View>
                 <View className='auth-wrap'>
                     <Image className='auth-logo widthFix' src={Logo} mode='widthFix'></Image>
-                    <View className='auth-name'>我家养身</View>
-                    <View className='auth-title'>我家养身将请求使用以下信息：</View>
+                    <View className='auth-name'>我家养生</View>
+                    <View className='auth-title'>我家养生将请求使用以下信息：</View>
                     <View className='auth-subt'>你的公开信息（昵称、头像等）</View>
                     {
                         Taro.canIUse('button.open-type.getUserInfo') ?
